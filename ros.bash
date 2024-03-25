@@ -1,28 +1,44 @@
 #!/bin/bash
 
-# Instalando o ROS
+locale  # check for UTF-8
 
-sudo apt update && sudo apt upgrade -y
+sudo apt update && sudo apt install locales
+sudo locale-gen en_US en_US.UTF-8
+sudo update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
+export LANG=en_US.UTF-8
 
-sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc)  main" > /etc/apt/sources.list.d/ros-latest.list'
+locale  # verify settings
 
-curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc |  sudo apt-key add -
+sudo apt install software-properties-common
+sudo add-apt-repository universe
 
-sudo apt update && sudo apt install ros-melodic-desktop-full ros-melodic-turtlebot3 ros-melodic-turtlebot3-simulations ros-melodic-gmapping python-rosdep python-rosinstall python-rosinstall-generator python-wstool build-essential x11-apps gnome-terminal -y
+sudo apt update && sudo apt install curl -y
+sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg
 
-echo "source /opt/ros/melodic/setup.bash" >> ~/.bashrc && source ~/.bashrc
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(. /etc/os-release && echo $UBUNTU_CODENAME) main" | sudo tee /etc/apt/sources.list.d/ros2.list > /dev/null
 
-#Instalando crazywarm
+sudo apt update
 
-sudo apt install python3
+sudo apt upgrade
 
-sudo apt install python3-colcon-common-extensions
+sudo apt install ros-humble-desktop
+
+sudo apt install ros-humble-ros-base
+
+sudo apt install ros-dev-tools
+
+
+echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc && source ~/.bashrc
+
+#agora o crazyswarm2
 
 sudo apt install libboost-program-options-dev libusb-1.0-0-dev
 pip3 install rowan
 
+
 pip3 install cflib transforms3d
-sudo apt-get install ros-*DISTRO*-tf-transformations
+sudo apt-get install ros-humble-tf-transformations
+
 
 mkdir -p ros2_ws/src
 cd ros2_ws/src
