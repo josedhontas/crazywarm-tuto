@@ -1,6 +1,6 @@
 #!/bin/bash
 
-c ../
+cd ../
 
 locale  # check for UTF-8
 
