@@ -3,11 +3,17 @@ Antes de executar este projeto, certifique-se de ter o *Ubuntu 22.04* como SO. T
 
 ## Como Executar
 1. Clone este repositorio usando:
-```shell script git clone https://github.com/josedhontas/ros-tuto.git ```
-
-2. 
-```shell script chmod +x ros.sh ```
-
+```shell script
+git clone https://github.com/josedhontas/ros-tuto.git
+```
 
 3. 
-```shell script ./ros.sh```
+```shell script
+ chmod +x ros.sh
+```
+
+
+5. 
+```shell
+script ./ros.sh
+```
