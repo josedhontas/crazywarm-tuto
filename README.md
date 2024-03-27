@@ -17,5 +17,5 @@ git clone https://github.com/josedhontas/ros-tuto.git
 ```
 4. Execute o script
 ```shell
-script ./ros.sh
+./ros.sh
 ```
